@@ -21,6 +21,6 @@ public class VecinoRestController {
 
     @GetMapping("/lista")
     public List<Vecino> listaVecinos() {
-        return VecinoServiceImpl.findAllVecino();
+        return vecinoService.findAllVecino();
     }
 }
