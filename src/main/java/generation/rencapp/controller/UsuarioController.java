@@ -41,8 +41,8 @@ public class UsuarioController {
         return "Usuario Creado";
     }
     @PostMapping("/crear/admin")
-    public String guardarAdmin(@ModelAttribute ) {
-        Usuario usuarioNuevo = usuarioService.guardarUsuario();
+    public String guardarAdmin(@ModelAttribute Usuario usuario) {
+        Usuario usuarioNuevo = usuarioService.guardarUsuario(usuario);
         usuarioNuevo.setTipo(TipoUsuario.ADMIN);
         return "Usuario Creado";
     }
