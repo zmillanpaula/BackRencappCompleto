@@ -21,15 +21,6 @@ public class Funcionario extends Usuario {
 
     /****************/
 
-    /*@OneToOne
-    @JoinColumn(name = "usuario_id")
-    private Usuario usuario;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-            name ="funcionario_rol",
-            joinColumns = @JoinColumn(name = "funcionario_id"),
-            inverseJoinColumns = @JoinColumn(name= "rol_id"))
-    private Set<Rol> roles = new HashSet<>();*/
 
 }

@@ -17,6 +17,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@Builder
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "tipo_usuario", discriminatorType = DiscriminatorType.STRING)
 public class Usuario {
@@ -47,9 +48,7 @@ public class Usuario {
     @UpdateTimestamp//Anotación para generar el almacenamiento de la fecha de actualización
     private LocalDateTime updatedAt;
 
-    public static ElasticsearchConnectionDetails.Node builder() {
-        return null;
-    }
+
 
 
     /***********Relaciones************/

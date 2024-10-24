@@ -21,19 +21,15 @@ public class Vecino extends Usuario {
     private String numeroTelefono;
 
     @Enumerated(EnumType.STRING)//Anotación para indicar que el valor del atributo va a tomarse de una enumeración
-    @Column(nullable = false)
+    @Column()
     private TipoDocumento tipoDocumento;
 
-    @Column(nullable = false)
+    @Column()
     private String numeroDeDocumento;
 
-    @Column (nullable = false)
+    @Column ()//nullable=false
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate fechaNacimiento;
 
-    /***********************/
-    /*@OneToOne
-    @JoinColumn(name = "usuario_id")
-    private Usuario usuario;*/
 
 }

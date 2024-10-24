@@ -65,9 +65,10 @@ public class WebSecurityConfig {
                 .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler)) // Configura el manejador de punto de entrada para errores de autenticación
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Configura la gestión de sesiones como sin estado
                 .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/api/auth/registro/admin").hasRole("ADMIN")
                         .requestMatchers("/api/auth/**").permitAll() // Permite el acceso a rutas específicas sin autenticación
                         .requestMatchers("/api/producto/nuevo").hasRole("ADMIN")
-                        .requestMatchers("/api/producto/lista").hasAnyRole("USER", "ADMIN")
+                        .requestMatchers("/api/").hasAnyRole("USER", "ADMIN")
                         .anyRequest().authenticated() // Requiere autenticación para cualquier otra solicitud
                 );
         http.authenticationProvider(authenticationProvider()); // Agrega el proveedor de autenticación al objeto HttpSecurity
@@ -76,21 +77,7 @@ public class WebSecurityConfig {
         return http.build(); // Devuelve la cadena de filtros de seguridad HTTP configurada
     }
 
-    // Configura el servicio de detalles de usuario en memoria
-    @Bean
-    public InMemoryUserDetailsManager userDetailsService(PasswordEncoder passwordEncoder) {
-        UserDetails user = User.withUsername("user")
-                .password(passwordEncoder.encode("password"))
-                .roles("USER")
-                .build();
 
-        UserDetails admin = User.withUsername("admin")
-                .password(passwordEncoder.encode("admin"))
-                .roles("USER", "ADMIN")
-                .build();
-
-        return new InMemoryUserDetailsManager(user, admin);
-    }
 
 
 }
