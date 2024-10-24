@@ -19,8 +19,6 @@ public class UsuarioDetailsImpl implements UserDetails {
 
     private static final long serialVersionUID = 1L;
 
-    private Long id;
-
     private String email;
 
     @JsonIgnore
@@ -34,7 +32,6 @@ public class UsuarioDetailsImpl implements UserDetails {
         SimpleGrantedAuthority authority = new SimpleGrantedAuthority("ROLE_" + usuario.getTipo().name());
         authorities.add(authority);
             return new UsuarioDetailsImpl(
-                    usuario.getId(),
                     usuario.getEmail(),
                     usuario.getPassword(),
                     authorities);
@@ -43,11 +40,6 @@ public class UsuarioDetailsImpl implements UserDetails {
         @Override
         public Collection<? extends GrantedAuthority> getAuthorities() {
             return authorities;
-        }
-
-
-        public Long getId() {
-            return id;
         }
 
         public String getEmail() {
@@ -84,15 +76,6 @@ public class UsuarioDetailsImpl implements UserDetails {
             return true;
         }
 
-        @Override
-        public boolean equals(Object o) {
-            if (this == o)
-                return true;
-            if (o == null || getClass() != o.getClass())
-                return false;
-            UsuarioDetailsImpl user = (UsuarioDetailsImpl) o;
-            return Objects.equals(id, user.id);
-        }
     }
 
 

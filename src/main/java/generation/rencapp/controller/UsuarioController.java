@@ -1,5 +1,6 @@
 package generation.rencapp.controller;
 
+import generation.rencapp.models.Funcionario;
 import generation.rencapp.models.TipoUsuario;
 import generation.rencapp.models.Usuario;
 import generation.rencapp.services.UsuarioService;
@@ -29,9 +30,21 @@ public class UsuarioController {
         return "registro-usuario";
     }
     @PostMapping("/Crear")
-    public String guardarUsuario(@ModelAttribute Usuario usuario) {
-        usuarioService.saveUsuario(usuarioNuevo);
-
-        if (usuarioNuevo.getTipo() ==)
+    public String guardarUsuarioNuevo(@ModelAttribute Usuario usuario) {
+        Usuario usuarioNuevo = usuarioService.guardarUsuario(usuario);
+        return "Usuario Creado";
     }
+    @PostMapping("/crear/funcionario")
+    public String guardarFuncionarioNuevo(@ModelAttribute Funcionario funcionario) {
+        Usuario usuarioNuevo = usuarioService.guardarUsuario(funcionario);
+        usuarioNuevo.setTipo(TipoUsuario.FUNCIONARIO);
+        return "Usuario Creado";
+    }
+    @PostMapping("/crear/admin")
+    public String guardarAdmin(@ModelAttribute ) {
+        Usuario usuarioNuevo = usuarioService.guardarUsuario();
+        usuarioNuevo.setTipo(TipoUsuario.ADMIN);
+        return "Usuario Creado";
+    }
+
 }

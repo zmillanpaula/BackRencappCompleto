@@ -22,7 +22,7 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonProperty("_id")
-    private Long _id;
+    private Long id;
 
     private String nombre;
 
@@ -45,6 +45,7 @@ public class Usuario {
 
     @UpdateTimestamp//Anotación para generar el almacenamiento de la fecha de actualización
     private LocalDateTime updatedAt;
+    
 
 
     /***********Relaciones************/
