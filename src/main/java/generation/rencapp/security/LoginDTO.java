@@ -12,5 +12,9 @@ public class LoginDTO {
 
     @NotBlank
     private String password;
+
+    public Object getEmail() {
+        return username;
+    }
 }
 

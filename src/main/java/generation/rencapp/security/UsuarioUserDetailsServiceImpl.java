@@ -20,4 +20,7 @@ public class UsuarioUserDetailsServiceImpl implements UserDetailsService {
         return UsuarioDetailsImpl.build(usuario);
     }
 
+    /*public Object getEmail() {
+        return
+    }*/
 }

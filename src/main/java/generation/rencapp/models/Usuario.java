@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.boot.autoconfigure.elasticsearch.ElasticsearchConnectionDetails;
 
 import java.time.LocalDateTime;
 
@@ -45,7 +46,10 @@ public class Usuario {
 
     @UpdateTimestamp//Anotación para generar el almacenamiento de la fecha de actualización
     private LocalDateTime updatedAt;
-    
+
+    public static ElasticsearchConnectionDetails.Node builder() {
+        return null;
+    }
 
 
     /***********Relaciones************/
