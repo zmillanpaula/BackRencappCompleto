@@ -46,7 +46,8 @@ public class AuthRestController {
     @PostMapping("/registro")
     public ResponseEntity<?> registerUser(@RequestBody SignupDTO solicitud) {
         Vecino nuevoVecino = new Vecino();
-        nuevoVecino.setNombre(solicitud.getUsername());
+        nuevoVecino.setNombre(solicitud.getNombre());
+        nuevoVecino.setApellido(solicitud.getApellido());
         nuevoVecino.setEmail(solicitud.getEmail());
         nuevoVecino.setPassword(passwordEncoder.encode(solicitud.getPassword()));
         nuevoVecino.setTipo(TipoUsuario.VECINO);
@@ -59,10 +60,13 @@ public class AuthRestController {
     @PostMapping("/registro/funcionario")
     public ResponseEntity<Usuario> registerFuncionario(@RequestBody SignupDTO solicitud) {
         Funcionario funcionarioNuevo = new Funcionario();
-        funcionarioNuevo.setNombre(solicitud.getUsername());
+        funcionarioNuevo.setNombre(solicitud.getNombre());
+        funcionarioNuevo.setApellido(solicitud.getApellido());
         funcionarioNuevo.setEmail(solicitud.getEmail());
         funcionarioNuevo.setPassword(passwordEncoder.encode(solicitud.getPassword()));
+        funcionarioNuevo.setDepartamento(solicitud.getDepartamento());
         funcionarioNuevo.setTipo(TipoUsuario.FUNCIONARIO);
+
 
         Usuario usuario = usuarioService.guardarUsuario(funcionarioNuevo);
 
@@ -72,7 +76,8 @@ public class AuthRestController {
     @PostMapping("/registro/admin")
     public ResponseEntity<Usuario> registerAdmin(@RequestBody SignupDTO solicitud) {
         Usuario usuarioNuevo = new Usuario();
-        usuarioNuevo.setNombre(solicitud.getUsername());
+        usuarioNuevo.setNombre(solicitud.getNombre());
+        usuarioNuevo.setApellido(solicitud.getApellido());
         usuarioNuevo.setEmail(solicitud.getEmail());
         usuarioNuevo.setPassword(passwordEncoder.encode(solicitud.getPassword()));
         usuarioNuevo.setTipo(TipoUsuario.ADMIN);
