@@ -10,4 +10,6 @@ public interface DepartamentoService {
     Departamento findById(Long id); //TODO: buscar por id
     List<Departamento> findAll(); //TODO: buscar todos
     Departamento save(Departamento departamento); //TODO: guardar
+    void deleteById(Long id);
+
 }

@@ -2,6 +2,7 @@ package generation.rencapp.service;
 
 import generation.rencapp.models.Departamento;
 import generation.rencapp.repository.DepartamentoRepository;
+import generation.rencapp.repository.ServicioRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,9 @@ public class DepartamentoServiceImpl implements DepartamentoService {
 
     @Autowired
     private DepartamentoRepository departamentoRepository;
+
+    @Autowired
+    private ServicioRepository servicioRepository;
 
     // Buscar Todos
     @Override
@@ -31,4 +35,11 @@ public class DepartamentoServiceImpl implements DepartamentoService {
     public Departamento save(Departamento departamento) {
         return departamentoRepository.save(departamento);
     }
+
+    @Override
+    public void deleteById(Long id){
+        if(servicioRepository.existsByDepartamentoId(id)) {
+            throw new RuntimeException("No se puede eliminar el departamento porque tiene un servicio asociado.");
+        }
+        departamentoRepository.deleteById(id); }
 }
