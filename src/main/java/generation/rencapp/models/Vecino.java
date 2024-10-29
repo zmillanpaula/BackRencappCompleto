@@ -18,11 +18,7 @@ public class Vecino extends Usuario {
     @Column (name = "direccion")
     private String direccion;
 
-    private String numeroTelefono;
-
-    @Enumerated(EnumType.STRING)//Anotación para indicar que el valor del atributo va a tomarse de una enumeración
-    @Column()
-    private TipoDocumento tipoDocumento;
+    private int numeroTelefono;
 
     @Column()
     private String numeroDeDocumento;

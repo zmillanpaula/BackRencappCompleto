@@ -61,7 +61,8 @@ public class WebSecurityConfig {
     // Define un bean para la cadena de filtros de seguridad HTTP
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.csrf(csrf -> csrf.disable()) // Deshabilita la protección CSRF
+        http.cors(cors-> cors.disable())
+                .csrf(csrf -> csrf.disable()) // Deshabilita la protección CSRF
                 .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler)) // Configura el manejador de punto de entrada para errores de autenticación
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Configura la gestión de sesiones como sin estado
                 .authorizeHttpRequests(auth -> auth
