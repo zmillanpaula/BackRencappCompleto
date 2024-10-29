@@ -2,6 +2,7 @@ package generation.rencapp.models;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.antlr.v4.runtime.misc.NotNull;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -25,6 +26,7 @@ public class Departamento {
     private String nombre; // nombre del departamento
     @Column(nullable = false)
     private String descripcion; // descripcion
+    @Column(updatable=false)
     @CreationTimestamp
     private LocalDateTime createdAt; // Creacion
     @UpdateTimestamp

@@ -2,6 +2,7 @@ package generation.rencapp.models;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.antlr.v4.runtime.misc.NotNull;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -29,21 +30,16 @@ public class Servicio {
     private Boolean agregarImagen; // imagen
     @Column(name = "agregar_pdf")
     private Boolean agregarPdf; // PDF
+    /*@Column(name = "agregar_comentario")
+    private Boolean agregarComentario;*/
     @Column(name = "terminos_condiciones")
     private Boolean terminosCondiciones; // Terminos & Condiciones
+    @Column(length = 255)
+    private String  textoTerminosCondiciones;
     @CreationTimestamp
     private LocalDateTime createdAt; // Creacion
     @UpdateTimestamp
     private LocalDateTime updatedAt; // Actualizacion
-    @Enumerated(EnumType.STRING)
-    private Estado estado; // ESTADO DEL SERVICIO
-
-    public enum Estado {
-        PENDIENTE,
-        EVALUADO,
-        PAGADADO,
-        FINALIZADO
-    }
 
     // Relaciones
     @ManyToOne

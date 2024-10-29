@@ -20,7 +20,7 @@ public class ServicioServiceImpl implements ServicioService {
         return servicioRepository.findAll();
     }
 
-    // Buscar por ID como dijos sebas
+    // Buscar por ID
     @Override
     public Servicio findById(Long id) {
         return servicioRepository.findById(id).get();
@@ -38,4 +38,8 @@ public class ServicioServiceImpl implements ServicioService {
         return servicioRepository.save(servicio);
     }
 
+    @Override
+    public void deleteById(Long id){
+        servicioRepository.deleteById(id);
+    }
 }

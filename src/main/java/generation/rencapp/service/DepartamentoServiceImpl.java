@@ -41,5 +41,6 @@ public class DepartamentoServiceImpl implements DepartamentoService {
         if(servicioRepository.existsByDepartamentoId(id)) {
             throw new RuntimeException("No se puede eliminar el departamento porque tiene un servicio asociado.");
         }
-        departamentoRepository.deleteById(id); }
+        departamentoRepository.deleteById(id);
+    }
 }
