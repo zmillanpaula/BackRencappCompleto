@@ -39,20 +39,12 @@ public class AuthRestController {
         UsuarioDetailsImpl userDetails = (UsuarioDetailsImpl) authentication.getPrincipal();
 
         String jwtToken = jwtUtils.generateJwtToken(userDetails);
-
-        return new ResponseEntity<>(new JwtResponse(jwtToken, userDetails.getEmail(), userDetails.getAuthorities().toString()), HttpStatus.OK);
+        Long userId = usuarioService.buscarUsuarioPorEmail(loginRequest.getEmail()).get().getId();
+        return new ResponseEntity<>(new JwtResponse(userId, jwtToken, userDetails.getEmail(), userDetails.getAuthorities().toString()), HttpStatus.OK);
     }
 
     @PostMapping("/registro")
     public ResponseEntity<?> registerUser(@RequestBody SignupDTO solicitud) {
-
-        if (!(solicitud.getEmail().equals(solicitud.getConfirmarEmail()))){
-            return (new ResponseEntity<>("los correos no coinciden", HttpStatus.NOT_ACCEPTABLE));
-        }
-
-        if (!(solicitud.getPassword().equals(solicitud.getConfirmarPassword()))){
-            return (new ResponseEntity<>("Las contraseñas no coinciden", HttpStatus.NOT_ACCEPTABLE));
-        }
 
         Vecino nuevoVecino = new Vecino();
         nuevoVecino.setNombre(solicitud.getNombre());
@@ -104,6 +96,7 @@ public class AuthRestController {
     @Getter
     @Setter
     public class JwtResponse {
+        private long id;
         private String token;
         private String email;
         private String tipoUser;

@@ -19,7 +19,7 @@ public class AuthEntryPointJwt implements AuthenticationEntryPoint {
 
     private static final Logger logger = LoggerFactory.getLogger(AuthEntryPointJwt.class);
 
-    // Método que se invoca cuando se produce una excepción de autenticación
+    // Metodo que se invoca cuando se produce una excepción de autenticación
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
         // Registrar un mensaje de error de autenticación no autorizada

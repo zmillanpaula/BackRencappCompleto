@@ -16,6 +16,7 @@ import java.time.LocalDate;
 public class Vecino extends Usuario {
 
     @Column (name = "direccion")
+
     private String direccion;
 
     private int numeroTelefono;

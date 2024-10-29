@@ -15,7 +15,9 @@ import java.util.Set;
 @DiscriminatorValue("FUNCIONARIO")
 public class Funcionario extends Usuario {
 
+
     private String departamento;
+
 
     //¿que más le podemos agregar?
 

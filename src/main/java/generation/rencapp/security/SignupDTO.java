@@ -29,17 +29,8 @@ public class SignupDTO {
     private String email;
 
     @NotBlank
-    @Size(max = 50)
-    @Email
-    private String confirmarEmail;
-
-    @NotBlank
     @Size(min = 6, max = 40)
     private String password;
-
-    @NotBlank
-    @Size(min = 6, max = 40)
-    private String confirmarPassword;
 
 
     private String departamento;
