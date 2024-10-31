@@ -71,9 +71,9 @@ public class DepartamentoRestController {
         return new ResponseEntity<>(departamentos, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Departamento> buscarPorId(@PathVariable Long id) {
-        Departamento departamento = departamentoService.findById(id);
+    @GetMapping
+    public ResponseEntity<Departamento> buscarPorId(@RequestParam Long search) {
+        Departamento departamento = departamentoService.findById(search);
         if (departamento != null) {
             return new ResponseEntity<>(departamento, HttpStatus.OK);
         } else {
