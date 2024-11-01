@@ -1,5 +1,6 @@
 package generation.rencapp.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import org.antlr.v4.runtime.misc.NotNull;
@@ -43,7 +44,8 @@ public class Servicio {
 
     // Relaciones
     @ManyToOne
-    @JoinColumn(name = "departamento_id", nullable = false)
+    @JsonIgnore
+    @JoinColumn(name = "departamento_id")
     private Departamento departamento;
 
 }

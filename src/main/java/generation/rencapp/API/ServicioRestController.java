@@ -39,8 +39,11 @@ public class ServicioRestController {
 
 package generation.rencapp.API;
 
+import generation.rencapp.models.Departamento;
 import generation.rencapp.models.Servicio;
+import generation.rencapp.service.DepartamentoServiceImpl;
 import generation.rencapp.service.ServicioService;
+import generation.rencapp.service.ServicioServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -54,7 +57,10 @@ import java.util.List;
 public class ServicioRestController {
 
     @Autowired
-    private ServicioService servicioService;
+    private ServicioServiceImpl servicioService;
+
+    @Autowired
+    private DepartamentoServiceImpl departamentoService;
 
     @GetMapping("/lista")
     public ResponseEntity<List<Servicio>> buscarLista() {
@@ -77,11 +83,23 @@ public class ServicioRestController {
         return new ResponseEntity<>(nuevoServicio, HttpStatus.CREATED);
     }*/
 
-    @PostMapping("/crear")
-    public ResponseEntity<Servicio> crearServicio(@RequestBody Servicio servicio) {
-        if (servicio.getNombre() == null || servicio.getDescripcion() == null || servicio.getDepartamento() == null) {
+
+    @GetMapping("/{idDepartamento}/verlistaservicios")
+    public ResponseEntity<List<Servicio>> buscarListaServiciosPorDepartamento(@PathVariable Long idDepartamento) {
+        Departamento departamento = departamentoService.findById(idDepartamento);
+        if  (departamento == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+        List<Servicio> listaServicio = servicioService.findByDepartamentoId(idDepartamento);
+        return new ResponseEntity<>(listaServicio, HttpStatus.OK);
+    }
+    @PostMapping("/{idDepartamento}/crear")
+    public ResponseEntity<Servicio> crearServicio(@RequestBody Servicio servicio, @PathVariable Long idDepartamento) {
+        Departamento departamento = departamentoService.findById(idDepartamento);
+        if (servicio.getNombre() == null || servicio.getDescripcion() == null || departamento == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        servicio.setDepartamento(departamento);
         Servicio nuevoServicio = servicioService.save(servicio);
         return new ResponseEntity<>(nuevoServicio, HttpStatus.CREATED);
     }
