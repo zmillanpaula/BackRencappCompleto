@@ -1,5 +1,6 @@
 package generation.rencapp.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import org.antlr.v4.runtime.misc.NotNull;
@@ -17,6 +18,7 @@ import java.util.List;
 @AllArgsConstructor
 @ToString
 @Builder
+
 public class Departamento {
     // Campos
     @Id
@@ -33,6 +35,7 @@ public class Departamento {
     private LocalDateTime updatedAt; // Actualizacion
 
     // Relaciones
+    @JsonIgnore
     @OneToMany(mappedBy = "departamento", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Servicio> servicios;
 }

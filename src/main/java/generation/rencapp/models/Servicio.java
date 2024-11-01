@@ -3,7 +3,6 @@ package generation.rencapp.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
-import org.antlr.v4.runtime.misc.NotNull;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -35,7 +34,7 @@ public class Servicio {
     private Boolean agregarComentario;*/
     @Column(name = "terminos_condiciones")
     private Boolean terminosCondiciones; // Terminos & Condiciones
-    @Column(length = 255)
+    @Column
     private String  textoTerminosCondiciones;
     @CreationTimestamp
     private LocalDateTime createdAt; // Creacion
