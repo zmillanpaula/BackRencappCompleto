@@ -5,6 +5,11 @@ import generation.rencapp.models.TipoUsuario;
 import generation.rencapp.models.Usuario;
 import generation.rencapp.models.Vecino;
 import generation.rencapp.services.UsuarioServiceImpl;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -28,6 +33,11 @@ public class AuthRestController {
     private final PasswordEncoder passwordEncoder;
     private final JwtUtils jwtUtils;
 
+    @Operation(summary = "Inicia sesión con un usuario existente")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Inicio de sesión exitoso", content = @Content(mediaType = "application/json", schema = @Schema(implementation = JwtResponse.class))),
+            @ApiResponse(responseCode = "401", description = "Credenciales inválidas")
+    })
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser (@RequestBody LoginDTO loginRequest) {
         Authentication authentication = authenticationManager.authenticate(
@@ -43,6 +53,11 @@ public class AuthRestController {
         return new ResponseEntity<>(new JwtResponse(userId, jwtToken, userDetails.getEmail(), userDetails.getAuthorities().toString()), HttpStatus.OK);
     }
 
+    @Operation(summary = "Registro de un usuario como Vecino")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Registro exitoso", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Vecino.class))),
+            @ApiResponse(responseCode = "400", description = "Error en el registro (usuario ya existe)")
+    })
     @PostMapping("/registro")
     public ResponseEntity<?> registerUser(@RequestBody SignupDTO solicitud) {
 
@@ -62,6 +77,11 @@ public class AuthRestController {
         return ResponseEntity.status(HttpStatus.CREATED).body(usuario);
     }
 
+    @Operation(summary = "Registro de un usuario como Funcionario")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Registro exitoso", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Funcionario.class))),
+            @ApiResponse(responseCode = "400", description = "Error en el registro (usuario ya existe)")
+    })
     @PostMapping("/registro/funcionario")
     public ResponseEntity<Usuario> registerFuncionario(@RequestBody SignupDTO solicitud) {
         Funcionario funcionarioNuevo = new Funcionario();
