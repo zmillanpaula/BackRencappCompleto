@@ -50,15 +50,4 @@ public class Usuario {
 
 
 
-
-    /***********Relaciones************/
-
-    /*@JsonIgnore
-    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)//Relación de 1 a 1
-    private Funcionario funcionario;
-
-
-    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
-    private Vecino vecino;*/
-
 }

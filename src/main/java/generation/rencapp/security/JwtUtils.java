@@ -28,7 +28,7 @@ public class JwtUtils {
 
     // Método para generar un token JWT a partir de los datos del usuario autenticado
     public String generateJwtToken(UsuarioDetailsImpl userPrincipal) {
-        return generateTokenFromUsername(userPrincipal.getUsername());
+        return generateTokenFromUsername(userPrincipal.getEmail());
     }
 
     // Método para obtener el nombre de usuario (subject) desde un token JWT
@@ -58,9 +58,9 @@ public class JwtUtils {
     }
 
     // Método para generar un token JWT a partir del nombre de usuario (subject)
-    private String generateTokenFromUsername(String username) {
+    private String generateTokenFromUsername(String email) {
         return Jwts.builder()
-                .setSubject(username)
+                .setSubject(email)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date((new Date()).getTime() + jwtExpirationMs))
                 .signWith(key(), SignatureAlgorithm.HS256)

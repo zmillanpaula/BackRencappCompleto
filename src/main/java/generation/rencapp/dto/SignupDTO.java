@@ -1,4 +1,4 @@
-package generation.rencapp.security;
+package generation.rencapp.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -7,8 +7,6 @@ import lombok.Data;
 
 
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.Set;
 
 @Data
 public class SignupDTO {

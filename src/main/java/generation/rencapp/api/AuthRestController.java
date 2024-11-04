@@ -1,9 +1,13 @@
-package generation.rencapp.security;
+package generation.rencapp.api;
 
 import generation.rencapp.models.Funcionario;
 import generation.rencapp.models.TipoUsuario;
 import generation.rencapp.models.Usuario;
 import generation.rencapp.models.Vecino;
+import generation.rencapp.security.JwtUtils;
+import generation.rencapp.dto.LoginDTO;
+import generation.rencapp.dto.SignupDTO;
+import generation.rencapp.security.UsuarioDetailsImpl;
 import generation.rencapp.services.UsuarioServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -19,7 +23,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -98,6 +101,11 @@ public class AuthRestController {
         return ResponseEntity.status(HttpStatus.CREATED).body(usuario);
     }
 
+    @Operation(summary = "Registro de un usuario como Administrador")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Registro exitoso", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Usuario.class))),
+            @ApiResponse(responseCode = "400", description = "Error en el registro (usuario ya existe)")
+    })
     @PostMapping("/registro/admin")
     public ResponseEntity<Usuario> registerAdmin(@RequestBody SignupDTO solicitud) {
         Usuario usuarioNuevo = new Usuario();

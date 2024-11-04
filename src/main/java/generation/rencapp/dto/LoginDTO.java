@@ -1,4 +1,4 @@
-package generation.rencapp.security;
+package generation.rencapp.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
