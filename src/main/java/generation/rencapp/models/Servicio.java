@@ -1,6 +1,6 @@
 package generation.rencapp.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -17,31 +17,27 @@ import java.time.LocalDateTime;
 @ToString
 @Builder
 public class Servicio {
-    // Campos
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // id
+    private Long id;
     @Column(nullable = false, unique = true)
-    private String nombre; // nombre del servicio
+    private String nombre;
     @Column(nullable = false, unique = true)
-    private String descripcion; // descripcion
-    /** Checkboxs **/
+    private String descripcion;
     @Column(name = "agregar_imagen")
-    private Boolean agregarImagen; // imagen
+    private Boolean agregarImagen;
     @Column(name = "agregar_pdf")
-    private Boolean agregarPdf; // PDF
-    /*@Column(name = "agregar_comentario")
-    private Boolean agregarComentario;*/
+    private Boolean agregarPdf;
     @Column(name = "terminos_condiciones")
-    private Boolean terminosCondiciones; // Terminos & Condiciones
+    private Boolean terminosCondiciones;
     @Column
     private String  textoTerminosCondiciones;
     @CreationTimestamp
-    private LocalDateTime createdAt; // Creacion
+    private LocalDateTime createdAt;
     @UpdateTimestamp
-    private LocalDateTime updatedAt; // Actualizacion
+    private LocalDateTime updatedAt;
 
-    // Relaciones
+
     @ManyToOne
     @JoinColumn(name = "departamento_id")
     private Departamento departamento;

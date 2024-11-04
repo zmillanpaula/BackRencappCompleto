@@ -3,7 +3,6 @@ package generation.rencapp.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
-import org.antlr.v4.runtime.misc.NotNull;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -20,21 +19,21 @@ import java.util.List;
 @Builder
 
 public class Departamento {
-    // Campos
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // id
+    private Long id;
     @Column(nullable = false, unique = true)
-    private String nombre; // nombre del departamento
+    private String nombre;
     @Column(nullable = false)
-    private String descripcion; // descripcion
+    private String descripcion;
     @Column(updatable=false)
     @CreationTimestamp
-    private LocalDateTime createdAt; // Creacion
+    private LocalDateTime createdAt;
     @UpdateTimestamp
-    private LocalDateTime updatedAt; // Actualizacion
+    private LocalDateTime updatedAt;
 
-    // Relaciones
+
     @JsonIgnore
     @OneToMany(mappedBy = "departamento", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Servicio> servicios;
