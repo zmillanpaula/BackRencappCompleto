@@ -43,7 +43,6 @@ public class Servicio {
 
     // Relaciones
     @ManyToOne
-    @JsonIgnore
     @JoinColumn(name = "departamento_id")
     private Departamento departamento;
 

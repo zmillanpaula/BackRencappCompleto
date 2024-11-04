@@ -112,7 +112,9 @@ public class ServicioRestController {
 
     @PutMapping("/editar/{id}")
     public ResponseEntity<Servicio> editarServicio(@PathVariable Long id, @RequestBody Servicio servicio) {
+        Departamento departamento= departamentoService.findById(servicioService.findById(id).getDepartamento().getId());
         servicio.setId(id);
+        servicio.setDepartamento(departamento);
         Servicio servicioEditado = servicioService.save(servicio);
         return new ResponseEntity<>(servicioEditado, HttpStatus.OK);
     }
