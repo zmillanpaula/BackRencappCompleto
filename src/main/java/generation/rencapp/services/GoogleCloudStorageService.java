@@ -18,11 +18,11 @@ import java.util.List;
 
 @Service
 public class GoogleCloudStorageService {
-    // @Value("${google.cloud.storage.bucket-name}")
-    private String bucketName = "example_bucket_renca";
-    private final String SERVICE_ACCOUNT_JSON_PATH = "C:\\Users\\Lenovo\\Downloads\\careful-muse-438313-k1-10a632007159.json";
+
+    private String bucketName = "";
+    private final String SERVICE_ACCOUNT_JSON_PATH = "";
     private final Storage storage;
-    // private final String GOOGLE_APPLICATION_CREDENTIALS = "C:\\Users\\p\\Desktop\\prueba\\analog-oven-438313-i2-b3b195ffa242.json";
+
 
 
     @Autowired
@@ -35,12 +35,11 @@ public class GoogleCloudStorageService {
 
     {
         try {
-            // System.out.println("Aca empieza el codigo");
+
             storage = StorageOptions.newBuilder()
                     .setCredentials(ServiceAccountCredentials.fromStream(new FileInputStream(SERVICE_ACCOUNT_JSON_PATH)))
                     .build().getService();
-            // System.out.println("Aca termina :) ");
-            // System.out.println(bucketName);
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

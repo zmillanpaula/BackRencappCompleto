@@ -64,6 +64,7 @@ La documentación de la API está disponible en `http://localhost:8080/swagger-u
   - [Manuel Donoso]
   - [Rene Cabello]
   - [Sabina Vargas]
+  - [Yessie Neira]
 - Tribu Quackendars:
   - [Fernando Parra]
   - [Maria Fernanda Bonelli]
