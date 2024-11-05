@@ -1,6 +1,7 @@
 package generation.rencapp.api;
+import generation.rencapp.models.Servicio;
 import generation.rencapp.models.Tramite;
-import generation.rencapp.security.AuthRestController;
+import generation.rencapp.services.ServicioService;
 import generation.rencapp.services.TramiteServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;

@@ -1,7 +1,6 @@
 package generation.rencapp.api;
 import generation.rencapp.models.Solicitud;
 import generation.rencapp.models.Tramite;
-import generation.rencapp.security.AuthRestController;
 import generation.rencapp.services.SolicitudServiceImpl;
 import generation.rencapp.services.TramiteServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
