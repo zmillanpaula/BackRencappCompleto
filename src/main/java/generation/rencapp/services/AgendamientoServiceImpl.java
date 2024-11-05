@@ -38,7 +38,7 @@ public class AgendamientoServiceImpl implements AgendamientoService{
     private HorarioRepository horarioRepository;
 
     @Autowired
-    private NotificacionServiceImpl notificacionService;
+    private NotificacionServicesImpl notificacionService;
 
 
     //Método para agendar cita
@@ -68,8 +68,8 @@ public class AgendamientoServiceImpl implements AgendamientoService{
         intervaloRepository.save(esValido);
         agendamientoRepository.save(nuevoAgendamiento);
         
-
-        notificacionService.crearNotificacion(usuario, tramite, nuevoAgendamiento);
+        Vecino vecino = (Vecino)usuario;
+        notificacionService.crearNotificacion(vecino, tramite, nuevoAgendamiento);
 
         return nuevoAgendamiento;
     }
