@@ -1,4 +1,5 @@
 package generation.rencapp.services;
+import generation.rencapp.models.Servicio;
 import generation.rencapp.models.Tramite;
 import generation.rencapp.repositories.TramiteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
