@@ -1,6 +1,7 @@
 package generation.rencapp.repositories;
 
 import generation.rencapp.models.Agendamiento;
+import generation.rencapp.models.TipoUsuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

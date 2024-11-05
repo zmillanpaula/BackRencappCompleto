@@ -1,8 +1,8 @@
 package generation.rencapp.api;
 
 import generation.rencapp.models.Agendamiento;
+import generation.rencapp.repositories.UsuarioRepository;
 import generation.rencapp.services.AgendamientoServiceImpl;
-//import generation.rencapp.services.NotificacionService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -26,10 +26,6 @@ public class AgendamientoRestController {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
-
-  //  @Autowired
-   // private NotificacionService notificacionService;
-
 
 
 

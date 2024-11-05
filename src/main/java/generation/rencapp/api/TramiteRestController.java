@@ -1,6 +1,7 @@
 package generation.rencapp.api;
+import generation.rencapp.models.Servicio;
 import generation.rencapp.models.Tramite;
-import generation.rencapp.security.AuthRestController;
+import generation.rencapp.services.ServicioService;
 import generation.rencapp.services.TramiteServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -27,7 +28,7 @@ public class TramiteRestController {
 
     @Operation(summary = "Obtiene lista de todos los trámites creados")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Lista de todas las plantillas de tramites creadas exitososamente", content = @Content(mediaType = "application/json", schema = @Schema(implementation = AuthRestController.JwtResponse.class))),
+            @ApiResponse(responseCode = "200", description = "Lista de todas las plantillas de tramites creadas exitososamente", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Tramite.class))),
             @ApiResponse(responseCode = "401", description = "Error en la obtención de la lista de todas las plantillas de tramites creadas")
     })
     @GetMapping("/lista")
@@ -39,7 +40,7 @@ public class TramiteRestController {
 
     @Operation(summary = "Obtiene trámite por id")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Muestra la plantilla de trámite según id exitosamente", content = @Content(mediaType = "application/json", schema = @Schema(implementation = AuthRestController.JwtResponse.class))),
+            @ApiResponse(responseCode = "200", description = "Muestra la plantilla de trámite según id exitosamente", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Tramite.class))),
             @ApiResponse(responseCode = "401", description = "Error en la visualización de las plantilla de trámite según id")
     })
     @GetMapping("/{id}")
@@ -50,7 +51,7 @@ public class TramiteRestController {
 
     @Operation(summary = "Elimina trámite por id")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Elimina plantilla de tramite según id exitosamente", content = @Content(mediaType = "application/json", schema = @Schema(implementation = AuthRestController.JwtResponse.class))),
+            @ApiResponse(responseCode = "200", description = "Elimina plantilla de tramite según id exitosamente", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Tramite.class))),
             @ApiResponse(responseCode = "401", description = "Error en la eliminación de las plantillas de tramite según id")
     })
     @DeleteMapping("/borrar/{id}")
@@ -62,7 +63,7 @@ public class TramiteRestController {
 
     @Operation(summary = "Crea nuevo trámite para el servicio con el id del servicio")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Crea nuevo plantilla de trámite para el servicio con el id del servicio exitosamente", content = @Content(mediaType = "application/json", schema = @Schema(implementation = AuthRestController.JwtResponse.class))),
+            @ApiResponse(responseCode = "200", description = "Crea nuevo plantilla de trámite para el servicio con el id del servicio exitosamente", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Tramite.class))),
             @ApiResponse(responseCode = "401", description = "Error en la creación de nuevo plantilla de trámite para el servicio con el id del servicio")
     })
     @PostMapping("/nuevo/{servicioId}")
@@ -77,7 +78,7 @@ public class TramiteRestController {
 
     @Operation(summary = "Modidificar el trámite según id")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Modidifica la plantilla del trámite según id exitosamente", content = @Content(mediaType = "application/json", schema = @Schema(implementation = AuthRestController.JwtResponse.class))),
+            @ApiResponse(responseCode = "200", description = "Modidifica la plantilla del trámite según id exitosamente", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Tramite.class))),
             @ApiResponse(responseCode = "401", description = "Error en la edición de la plantilla del trámite según id")
     })
     @PutMapping("/editar/{id}")

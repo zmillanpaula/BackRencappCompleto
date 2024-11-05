@@ -2,7 +2,10 @@ package generation.rencapp.api;
 
 import generation.rencapp.models.Horario;
 import generation.rencapp.models.Intervalos;
+import generation.rencapp.models.Tramite;
+import generation.rencapp.services.FuncionarioServiceImpl;
 import generation.rencapp.services.HorarioServiceImpl;
+import generation.rencapp.services.TramiteServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
