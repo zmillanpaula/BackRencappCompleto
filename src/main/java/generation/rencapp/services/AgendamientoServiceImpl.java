@@ -19,14 +19,6 @@ public class AgendamientoServiceImpl implements AgendamientoService{
     private AgendamientoRepository agendamientoRepository;
 
     @Autowired
-    private FuncionarioRepository funcionarioRepository;
-
-    @Autowired
-    private VecinoRepository vecinoRepository;
-
-    @Autowired
-    private HorarioServiceImpl horarioServiceImpl;
-    @Autowired
     private UsuarioRepository usuarioRepository;
 
     @Autowired
@@ -68,7 +60,7 @@ public class AgendamientoServiceImpl implements AgendamientoService{
         intervaloRepository.save(esValido);
         agendamientoRepository.save(nuevoAgendamiento);
         
-        Vecino vecino = (Vecino)usuario;
+        Vecino vecino = usuarioRepository.findByIdAndTipoUsuario(usuarioId,TipoUsuario.VECINO);
         notificacionService.crearNotificacion(vecino, tramite, nuevoAgendamiento);
 
         return nuevoAgendamiento;

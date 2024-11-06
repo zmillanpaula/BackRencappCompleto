@@ -1,7 +1,7 @@
 package generation.rencapp.api;
 
 import generation.rencapp.models.Documento;
-import generation.rencapp.services.GoogleCloudStorageService;
+import generation.rencapp.storage.GoogleCloudStorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
