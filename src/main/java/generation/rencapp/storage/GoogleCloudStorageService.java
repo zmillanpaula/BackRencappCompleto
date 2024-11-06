@@ -1,4 +1,4 @@
-package generation.rencapp.services;
+package generation.rencapp.storage;
 
 import com.google.auth.oauth2.ServiceAccountCredentials;
 import com.google.cloud.storage.*;

@@ -50,7 +50,7 @@ public class NotificacionServicesImpl implements NotificacionService {
             }
         }
         /***NOTIFICACIÓN POR SMS**/
-            String numero= "+"+ String.valueOf(vecino.getNumeroTelefono());
+            String numero= "+56"+ vecino.getNumeroTelefono();
         if (numero != null && !numero.isEmpty()) {
             try {
                 mensajesService.enviarMensaje(numero, "Tu hora ha sido agendada para el día" + agendamiento.getFecha());
