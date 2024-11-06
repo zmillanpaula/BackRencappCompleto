@@ -23,11 +23,49 @@ Este sistema permite a los vecinos agendar citas, solicitar trámites, subir doc
 - **SendGrid API**: Para el envío de notificaciones y confirmaciones por correo electrónico.
 
 ### Instalación
-1. Clona el repositorio.
-2. Ejecuta mvn install para instalar las dependencias.
+1. Clona el repositorio:
+   ```bash
+   git clone https://github.com/usuario/rencapp-api.git
+   ```
+2. Navega hasta el directorio:
+   ```bash
+   cd RencappRest
+   ```
+3. Instala las dependencias del proyecto usando Maven:
+   ```bash
+   mvn install
+   ```
+4. Configura las credenciales del servidor Mysql en el archivo:
+  - Crea una base de datos en MySQL con el nombre rencapp.
+  - Configura las credenciales en el archivo `application.properties` en el directorio `src/main/resources`:
+   ```properties
+   spring.datasource.url=jdbc:mysql://localhost:3306/rencapp
+   spring.datasource.username=TU_USUARIO
+   spring.datasource.password=TU_CONTRASEÑA
+   ```
+6. Configura las variables de entorno necesarias para Google Cloud Storage y SendGrid en el archivo `application.properties` en el directorio `src/main/resources`:
+    ```properties
+   bucket.name=test-GCP_BUCKET_NAME
+   sendgrid.sender.email=SENDER_EMAIL_SENDGRID
+   sendgrid.api.key=API_KEY_SENDGIRD
+   ```
+7. Agrega la ruta de la clave `JSON` en la clase  `GoogleCloudStorageService` en el directorio `src/main/java/rencapp/storage`:
+   ```java
+   private final String SERVICE_ACCOUNT_JSON_PATH="TU_RUTA_A_CLAVE_JSON"
+   ```
+8. Para recibir notificaciones por SMS con Twilio, agrega valores a las variables en la clase  `MensajesService` en el directorio `src/main/java/rencapp/email`:
+   ```java
+   public static final String sid = "TU_SID_TWILIO";
+   public static final String token = "TU_TOKEN_TWILIO";
+   public static final String remitente = "TU_NUMERO_REMITENTE";
+   ```
 
 ### Ejecución
-Inicia el proyecto con mvn spring-boot:run. La API estará disponible en http://localhost:8080.
+Inicia el proyecto con:
+ ```bash
+   mvn spring-boot:run
+ ```
+La API estará disponible en `http://localhost:8080`.
 
 ### Módulos
 - **Autenticación**: Manejo de inicio de sesión y registro de usuarios.
@@ -43,36 +81,36 @@ La documentación de la API está disponible en `http://localhost:8080/swagger-u
 ### Colaboradores
 - Tribu OneBits:
   - [Belén Vidal](https://github.com/belenvidal1)
-  - [Branco Moreira]
-  - [Daniel Pérez]
-  - [Nadima López]
+  - [Branco Moreira](https://github.com/BrancoMI)
+  - [Daniel Pérez](https://github.com/Daniel27Perez)
+  - [Nadima López](https://github.com/NadimaLopez)
 - Tribu PatiDevs:
-  - [Estefany Rodríguez]
-  - [Eleonor Liguen]
-  - [Matías Duran]
-  - [Matías Carreño]
+  - [Estefany Rodríguez](https://github.com/EstefanyRodriguezP)
+  - [Eleonor Liguen](https://github.com/mendriLg)
+  - [Matías Duran](https://github.com/znatan13)
+  - [Matías Carreño](https://github.com/MatiasD20)
 - Tribu SaiyaBit:
-  - [Benjamin Riquelme]
-  - [Catalina Fuenzalida]
-  - [Fabian Vilches]
-  - [Marcelo Gallardo]
-  - [Paulina Vargas]
-  - [Sebastian Quero]
+  - [Benjamin Riquelme](https://github.com/MrBenji20)
+  - [Catalina Fuenzalida](https://github.com/catycaaa)
+  - [Fabian Vilches](https://github.com/C14Vilches)
+  - [Marcelo Gallardo](https://github.com/MarceloGallardo01)
+  - [Paulina Vargas](https://github.com/PaulinaaVargas)
+  - [Sebastian Quero](https://github.com/QueroSebastian)
 - Tribu WebMasterJava:
-  - [Duberney Cardona]
-  - [Fabian Canales]
-  - [Manuel Donoso]
-  - [Rene Cabello]
-  - [Sabina Vargas]
-  - [Yessie Neira]
+  - [Duberney Cardona](https://github.com/BuBaBug)
+  - [Fabian Canales](https://github.com/FabianCanales)
+  - [Manuel Donoso](https://github.com/Manueldonoso07)
+  - [Rene Cabello](https://github.com/CabelloMorales)
+  - [Sabina Vargas](https://github.com/SabinaVC)
+  - [Yessie Neira](https://github.com/YessNC)
 - Tribu Quackendars:
-  - [Fernando Parra]
-  - [Maria Fernanda Bonelli]
-  - [Manuel Martinez]
-  - [Paula Millan]
-  - [Valentina Matamala]
+  - [Fernando Parra](https://github.com/fernandopmtz)
+  - [Maria Fernanda Bonelli](https://github.com/mariabonelli)
+  - [Manuel Martinez](https://github.com/manueelmg)
+  - [Paula Millan](https://github.com/zmillanpaula)
+  - [Valentina Matamala](https://github.com/ValentinaMatamalaGonzalez)
 - Tribu AmongBugs:
-  - [Carol Arias]
-  - [Donald Vargas]
-  - [Felipe Bascuñan]
-  - [Violeta Pino]
+  - [Carol Arias](https://github.com/AriasCarol)
+  - [Donald Vargas](https://github.com/DonaldVargas7)
+  - [Felipe Bascuñan](https://github.com/FelipeBascunanA)
+  - [Violeta Pino](https://github.com/Viole0416)
